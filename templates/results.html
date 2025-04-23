@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results for: <span class="query-text">"{{ query }}"</span></h1>
+        <p>Detected query type: <strong>{{ query_type }}</strong></p>
+        <a href="/">← New Search</a>
+
+        {% if results %}
+            <h2>Results:</h2>
+            <ul class="results-list">
+                {% for result in results %}
+                <li class="result-item">
+                    <span class="source-badge source-{{ result.source.split(' ')[0].lower() }}">{{ result.source }}</span>
+                    <strong><a href="{{ result.url }}" target="_blank">{{ result.title }} (ID: {{ result.id }})</a></strong>
+                    {% if result.organism %}
+                        <br><em>Organism:</em> {{ result.organism }}
+                    {% endif %}
+                     {% if result.description %}
+                        <br><em>Info:</em> {{ result.description }}
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found for your query.</p>
+        {% endif %}
+
+         <a href="/">← New Search</a>
+    </div>
+</body>
+</html>

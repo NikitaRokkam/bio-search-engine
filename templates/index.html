@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unified Bio Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Unified Bioinformatics Search</h1>
+        <form method="POST" action="/search">
+            <textarea name="query" rows="4" placeholder="Enter biological sequence (DNA/Protein) or keyword..." required></textarea>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</body>
+</html>
